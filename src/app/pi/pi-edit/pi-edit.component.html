@@ -1,0 +1,228 @@
+<h3>מלא את הפרטים ואח"כ לחץ על שמור</h3>
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="personalInformationForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!personalInformationForm.valid">שמירה</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">ביטול</button>
+        </div>
+      </div>
+      <div dir="rtl" class="row">
+        <div class="col-xs-12">
+          <h3>פרטים אישיים</h3>
+          <hr>
+        </div>
+      </div>
+      <div class="row" dir="rtl">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="firstName">שם</label>
+            <input type="text" id="firstName" formControlName="firstName" class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="lastName">משפחה</label>
+            <input type="text" id="lastName" formControlName="lastName" class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="id">ת"ז\דרכון</label>
+            <input type="number" id="id" formControlName="id" class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="birthDate">תאריך לידה</label>
+            <input type="date" id="birthDate" formControlName="birthDate" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+          <!-- <div class="form-group"> -->
+          <label for="dateIssueIdentityCard">תאריך הנפקת ת"ז</label>
+          <input type="date" id="dateIssueIdentityCard" formControlName="dateIssueIdentityCard" class="form-control">
+          <!-- </div> -->
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="maritalStatus">מצב משפחתי</label>
+            <br>
+            <select id="maritalStatus" formControlName="maritalStatus" class="form-control">
+              <option *ngFor="let ms of maritalStatus" [ngValue]="ms">{{ms}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="address">כתובת מגורים </label>
+            <input type="text" id="address" formControlName="address" class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="city">עיר</label>
+            <input type="text" id="city" formControlName="city" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="mobile">נייד</label>
+            <input type="number" id="mobile" formControlName="mobile" class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="stationary">נייח</label>
+            <input type="number" id="stationary" formControlName="stationary" class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="checkbox">סימון V</label>
+            <input type="checkbox" id="checkbox" formControlName="checkbox" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <h3>פרטי חשבון בנק</h3>
+            <hr>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="branch">בנק</label>
+            <input type="text" id="branch" formControlName="branch" class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="branch">סניף</label>
+            <input type="text" id="branch" formControlName="branch" class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="invoice">חשבון</label>
+            <input type="text" id="invoice" formControlName="invoice" class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="bank">מסגרת אשראי</label>
+            <input type="number" id="bank" formControlName="bank" class="form-control">
+          </div>
+        </div>
+      </div>
+        <!-- <div class="col-xs-3">
+          <div class="form-group">
+            <label for="branch">סניף</label>
+            <input type="text" id="branch" formControlName="branch" class="form-control">
+          </div>
+        </div> -->
+      <!-- <div class="row">
+          <div class="col-xs-12">
+            <h3>ערבים</h3>
+            <hr>
+          </div>
+        </div> -->
+
+      <div class="row">
+        <div class="col-xs-12" formArrayName="guarantors">
+          <div class="row" *ngFor="let guarantorCtrl of getControls(); let i = index" [formGroupName]="i" style="margin-top: 10px;">
+              <div class="row">
+                  <div class="col-xs-12">
+                    <h3> ערב  {{i+1}}</h3>
+                    <hr>
+                  </div>
+                </div>
+            <div class="row">
+              <div class="col-xs-3">
+                  <label for="firstName">שם פרטי</label>
+                <input type="text" name="firstName" class="form-control" formControlName="firstName">
+              </div>
+              <div class="col-xs-3">
+                  <label for="lastName">משפחה</label>
+                <input type="text" class="form-control" formControlName="lastName">
+              </div>
+              <div class="col-xs-3">
+                  <label for="id">תעודת זהות</label>
+                <input type="number" class="form-control" formControlName="id">
+              </div>
+              <div class="col-xs-3">
+                  <label for="birthDate">תאריך לידה</label>
+                <input type="date" class="form-control" formControlName="birthDate">
+              </div>
+            </div>
+
+            <br>
+            <div class="row">
+              <div class="col-xs-3">
+                  <label for="address">כתובת</label>
+                <input type="text" class="form-control" formControlName="address">
+              </div>
+              <div class="col-xs-3">
+                  <label for="city">עיר</label>
+                <input type="text" class="form-control" formControlName="city">
+              </div>
+              <div class="col-xs-3">
+                  <label for="mobile">פלאפון</label>
+                <input type="number" class="form-control" formControlName="mobile">
+              </div>
+              <div class="col-xs-3">
+                  <label for="stationary">טלפון</label>
+                <input type="number" class="form-control" formControlName="stationary">
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-3">
+                  <label for="bank">בנק</label>
+                <input type="text" class="form-control" formControlName="bank">
+              </div>
+              <div class="col-xs-3">
+                  <label for="branch">סניף</label>
+                <input type="text" class="form-control" formControlName="branch">
+              </div>
+              <div class="col-xs-3">
+                  <label for="invoice">חשבון</label>
+                <input type="text" class="form-control" formControlName="invoice">
+              </div>
+            </div>
+            <br>
+            <!-- <div class="row">
+          
+          </div> -->
+            <div class="row">
+              <div class="col-xs-3">
+                  <label for="lineOfCredit">מסגרת אשראי</label>
+                <input type="number" class="form-control" formControlName="lineOfCredit">
+              </div>
+              <!-- <div class="col-xs-3">
+                  <label for="remarks2">הארות</label>
+                <input type="text" class="form-control" formControlName="remarks2">
+              </div> -->
+              <div class="col-xs-3">
+                <button type="button" class="btn btn-danger" (click)="onDeleteIngredient(i)">מחק ערב</button>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="button" class="btn btn-success" (click)="onAddGuarantor()">הוסף ערב</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

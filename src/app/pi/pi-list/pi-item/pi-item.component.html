@@ -1,0 +1,16 @@
+<a
+  style="cursor: pointer;"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ personalInformation.id }}</h4>
+  </div>
+  <div class="pull-center">
+      <h4 class="list-group-item-heading">{{ personalInformation.lastName }}</h4>
+  </div>
+
+  <div class="pull-right">
+        <h4 class="list-group-item-heading">{{ personalInformation.firstName }}</h4>
+  </div>
+</a>

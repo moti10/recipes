@@ -1,0 +1,15 @@
+<!-- <div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewPersonalInformation()">לקוח חדש</button>
+  </div>
+</div> -->
+<!-- <hr> -->
+<div class="row">
+  <div class="col-xs-12">
+    <app-pi-item
+      *ngFor="let personalInformationEl of (personalInformationState | async).personalInformations; let i = index"
+      [personalInformation]="personalInformationEl"
+      [index]="i"></app-pi-item>
+  </div>
+</div>
+
